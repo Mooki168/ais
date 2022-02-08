@@ -29,10 +29,10 @@ Types = {
         OPEN: 25,
         CHECK: 26
     },
-
+    
     Entities: {
         WARRIOR: 1,
-
+        
         // Mobs
         RAT: 2,
         SKELETON: 3,
@@ -47,7 +47,7 @@ Types = {
         SKELETON2: 12,
         BOSS: 13,
         DEATHKNIGHT: 14,
-
+        
         // Armors
         FIREFOX: 20,
         CLOTHARMOR: 21,
@@ -56,14 +56,14 @@ Types = {
         PLATEARMOR: 24,
         REDARMOR: 25,
         GOLDENARMOR: 26,
-
+        
         // Objects
         FLASK: 35,
         BURGER: 36,
         CHEST: 37,
         FIREPOTION: 38,
         CAKE: 39,
-
+        
         // NPCs
         GUARD: 40,
         KING: 41,
@@ -81,7 +81,7 @@ Types = {
         DESERTNPC: 53,
         LAVANPC: 54,
         CODER: 55,
-
+        
         // Weapons
         SWORD1: 60,
         SWORD2: 61,
@@ -91,40 +91,18 @@ Types = {
         AXE: 65,
         BLUESWORD: 66
     },
-
+    
     Orientations: {
         UP: 1,
         DOWN: 2,
         LEFT: 3,
         RIGHT: 4
-    },
-
-    Keys: {
-        ENTER: 13,
-        UP: 38,
-        DOWN: 40,
-        LEFT: 37,
-        RIGHT: 39,
-        W: 87,
-        A: 65,
-        S: 83,
-        D: 68,
-        SPACE: 32,
-        I: 73,
-        H: 72,
-        M: 77,
-        P: 80,
-        KEYPAD_4: 100,
-        KEYPAD_6: 102,
-        KEYPAD_8: 104,
-        KEYPAD_2: 98
     }
-
 };
 
 var kinds = {
     warrior: [Types.Entities.WARRIOR, "player"],
-
+    
     rat: [Types.Entities.RAT, "mob"],
     skeleton: [Types.Entities.SKELETON , "mob"],
     goblin: [Types.Entities.GOBLIN, "mob"],
@@ -146,7 +124,7 @@ var kinds = {
     bluesword: [Types.Entities.BLUESWORD, "weapon"],
     goldensword: [Types.Entities.GOLDENSWORD, "weapon"],
     morningstar: [Types.Entities.MORNINGSTAR, "weapon"],
-
+    
     firefox: [Types.Entities.FIREFOX, "armor"],
     clotharmor: [Types.Entities.CLOTHARMOR, "armor"],
     leatherarmor: [Types.Entities.LEATHERARMOR, "armor"],
@@ -177,7 +155,7 @@ var kinds = {
     forestnpc: [Types.Entities.FORESTNPC, "npc"],
     desertnpc: [Types.Entities.DESERTNPC, "npc"],
     lavanpc: [Types.Entities.LAVANPC, "npc"],
-
+    
     getType: function(kind) {
         return kinds[Types.getKindAsString(kind)][1];
     }
@@ -243,13 +221,13 @@ Types.isChest = function(kind) {
 };
 
 Types.isItem = function(kind) {
-    return Types.isWeapon(kind)
-        || Types.isArmor(kind)
+    return Types.isWeapon(kind) 
+        || Types.isArmor(kind) 
         || (Types.isObject(kind) && !Types.isChest(kind));
 };
 
 Types.isHealingItem = function(kind) {
-    return kind === Types.Entities.FLASK
+    return kind === Types.Entities.FLASK 
         || kind === Types.Entities.BURGER;
 };
 
@@ -317,7 +295,7 @@ Types.getRandomItemKind = function(item) {
         forbidden = [Types.Entities.SWORD1, Types.Entities.CLOTHARMOR],
         itemKinds = _.difference(all, forbidden),
         i = Math.floor(Math.random() * _.size(itemKinds));
-
+    
     return itemKinds[i];
 };
 

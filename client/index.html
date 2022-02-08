@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <!-- 
 
- , __                     _       __                      
-/|/  \             .     | |     /  \                     
- | __/__  ,_  _|_  ,  __ |/  _  | __ |          _   , _|_ 
- |   /  \/  |  |  /| /   |  |/  |/  \|  |   |  |/  / \_|  
- |   \__/\  |_/|_/ |/\__/|_/|__ /\__/\_/ \_/|_/|__/ \/ |_/
+ , __                                   __                      
+/|/  \                                 /  \                     
+ | __/ ,_    __           ,   _   ,_  | __ |          _   , _|_ 
+ |   \/  |  /  \_|  |  |_/ \_|/  /  | |/  \|  |   |  |/  / \_|  
+ |(__/   |_/\__/  \/ \/   \/ |__/   |_/\__/\_/ \_/|_/|__/ \/ |_/
 
-CERN Summer Webfest presents an HTML5 mini-MMORPG by Summer Students http://www.citizencyberscience.net/cern-webfest/
+Mozilla presents an HTML5 mini-MMORPG by Little Workshop http://www.littleworkshop.fr
 
 * Client libraries used: RequireJS, Underscore.js, jQuery, Modernizr
 * Server-side: Node.js, Worlize/WebSocket-Node, miksago/node-websocket-server
@@ -21,27 +21,14 @@ CERN Summer Webfest presents an HTML5 mini-MMORPG by Summer Students http://www.
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
         <link rel="icon" type="image/png" href="img/common/favicon.png">
-        <meta property="og:title" content="ParticleQuest">
+        <meta property="og:title" content="BrowserQuest">
         <meta property="og:type" content="website">
         <meta property="og:url" content="http://browserquest.mozilla.org/">
         <meta property="og:image" content="http://browserquest.mozilla.org/img/common/promo-title.jpg">
-        <meta property="og:site_name" content="ParticleQuest">
-        <meta property="og:description" content="Play CERN's ParticleQuest, an HTML5 massively multiplayer game demo powered by WebSockets!">
+        <meta property="og:site_name" content="BrowserQuest">
+        <meta property="og:description" content="Play Mozilla's BrowserQuest, an HTML5 massively multiplayer game demo powered by WebSockets!">
         <link rel="stylesheet" href="css/main.css" type="text/css">
         <link rel="stylesheet" href="css/achievements.css" type="text/css">
-
-        <link href="img/common/apple-touch-icon-57x57.png" rel="apple-touch-icon-precomposed" sizes="57x57">
-        <link href="img/common/apple-touch-icon-72x72.png" rel="apple-touch-icon-precomposed" sizes="72x72">
-        <link href="img/common/apple-touch-icon-114x114.png" rel="apple-touch-icon-precomposed" sizes="114x114">
-        <link href="img/common/apple-touch-icon-144x144.png" rel="apple-touch-icon-precomposed" sizes="144x144">
-
-        <link href="img/common/apple-touch-startup-image-320x460.png" rel="apple-touch-startup-image" media="(device-width: 320px)">
-        <link href="img/common/apple-touch-startup-image-640x920.png" rel="apple-touch-startup-image" media="(device-width: 320px) and (-webkit-device-pixel-ratio: 2)">
-        <link href="img/common/apple-touch-startup-image-768x1004.png" rel="apple-touch-startup-image" media="(device-width: 768px) and (orientation: portrait)">
-        <link href="img/common/apple-touch-startup-image-748x1024.png" rel="apple-touch-startup-image" media="(device-width: 768px) and (orientation: landscape)">
-        <link href="img/common/apple-touch-startup-image-1536x2008.png" rel="apple-touch-startup-image" media="(device-width: 1536px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)">
-        <link href="img/common/apple-touch-startup-image-1496x2048.png" rel="apple-touch-startup-image" media="(device-width: 1536px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)">
-
         <script src="js/lib/modernizr.js" type="text/javascript"></script>
         <!--[if lt IE 9]>
                 <link rel="stylesheet" href="css/ie.css" type="text/css">
@@ -51,7 +38,7 @@ CERN Summer Webfest presents an HTML5 mini-MMORPG by Summer Students http://www.
                 </script>
         <![endif]-->
         <script src="js/detect.js" type="text/javascript"></script>
-        <title>ParticleQuest</title>
+        <title>BrowserQuest</title>
 	</head>
     <!--[if lt IE 9]>
 	<body class="intro upscaled">
@@ -59,7 +46,7 @@ CERN Summer Webfest presents an HTML5 mini-MMORPG by Summer Students http://www.
 	<body class="intro">
 	    <noscript>
 	       <div class="alert">
-	           You need to enable JavaScript to play ParticleQuest.
+	           You need to enable JavaScript to play BrowserQuest.
 	       </div>
 	    </noscript>
 	    <a id="moztab" class="clickable" target="_blank" href="http://www.mozilla.org/"></a>
@@ -88,8 +75,7 @@ CERN Summer Webfest presents an HTML5 mini-MMORPG by Summer Students http://www.
                              <div></div>
                          </div>
                          <form action="none" method="get" accept-charset="utf-8">
-                             <label id="name-tooltip" for="player">Try to think of a cool nickname!</label>
-                             <input type="text" id="nameinput" class="stroke" name="player-name" placeholder="Name your character" maxlength="15" autofocus>
+                             <input type="text" id="nameinput" class="stroke" name="player-name" placeholder="Name your character" maxlength="15">
                          </form>
                          <div class="play button disabled">
                              <div></div>
@@ -118,7 +104,7 @@ CERN Summer Webfest presents an HTML5 mini-MMORPG by Summer Students http://www.
                              <img src="img/common/spinner.gif" alt="">
                          </div>
                          <div id="create-new">
-                            <span><span>or</span> reset your character</span>
+                            <span><span>or</span> create a new character</span>
                          </div>
                     </article>
                     <article id="confirmation">
@@ -141,7 +127,6 @@ CERN Summer Webfest presents an HTML5 mini-MMORPG by Summer Students http://www.
          	               <span class="left-ornament"></span>
          	               <span class="title">
          	                   Made for Mozilla by <a target="_blank" class="stroke clickable" href="http://www.littleworkshop.fr/">Little Workshop</a>
-                               Forked by CERN Summer Students for the CERN Summer Webfest 2012
          	               </span>
          	               <span class="right-ornament"></span>
                         </h1>
@@ -160,7 +145,7 @@ CERN Summer Webfest presents an HTML5 mini-MMORPG by Summer Students http://www.
                         <div id="seb">
                             
                             <span id="note"></span>
-                            Music by <a class="clickable" target="_blank" href="http://soundcloud.com/gyrowolf">Terrel O'Brien</a>, <a class="clickable" target="_blank" href="http://blog.dayjo.org">Joel Day</a>, <a class="clickable" target="_blank" href="http://www.dantilden.com">Dan Tilden</a>, &amp; <a target="_blank" class="clickable" href="http://soundcloud.com/aaron-anderson-11">Aaron Krogh</a>
+                            Music by <a class="clickable" target="_blank" href="http://soundcloud.com/gyrowolf/sets/gyrowolfs-rpg-maker-music-pack/">Gyrowolf</a>, <a class="clickable" target="_blank" href="http://blog.dayjo.org/?p=335">Dayjo</a>, <a class="clickable" target="_blank" href="http://soundcloud.com/freakified/what-dangers-await-campus-map">Freakified</a>, &amp; <a target="_blank" class="clickable" href="http://www.newgrounds.com/audio/listen/349734">Camoshark</a>
                            
                         </div>
 	                    <div id="close-credits">
@@ -171,13 +156,13 @@ CERN Summer Webfest presents an HTML5 mini-MMORPG by Summer Students http://www.
         	            <h1>
          	               <span class="left-ornament"></span>
          	               <span class="title">
-         	                   What is ParticleQuest?
+         	                   What is BrowserQuest?
          	               </span>
          	               <span class="right-ornament"></span>
                         </h1>
                         <p id="game-desc">
-                            ParticleQuest is a multiplayer game inviting you to explore the
-                            exciting world of Science at CERN from your Web browser.
+                            BrowserQuest is a multiplayer game inviting you to explore a
+                            world of adventure from your Web browser.
                         </p>
                         <div class="left">
                             <div class="img"></div>
@@ -192,11 +177,11 @@ CERN Summer Webfest presents an HTML5 mini-MMORPG by Summer Students http://www.
                         <div class="right">
                             <div class="img"></div>
                             <p>
-                                ParticleQuest is available on Firefox, Chrome, Safari as well as iOS devices and Firefox for Android.
+                                BrowserQuest is available on Firefox, Chrome, Safari as well as iOS devices and Firefox for Android.
                             </p>
                             <span class="link">
                                 <span class="ext-link"></span>
-                                <a target="_blank" class="clickable" href="http://github.com/particlequest/ParticleQuest">Grab the source</a> on Github
+                                <a target="_blank" class="clickable" href="http://github.com/mozilla/BrowserQuest">Grab the source</a> on Github
                             </span>
                         </div>
 	                    <div id="close-about">
@@ -210,26 +195,13 @@ CERN Summer Webfest presents an HTML5 mini-MMORPG by Summer Students http://www.
                     <article id="error">
           	           <h1>
           	               <span class="left-ornament"></span>
-          	               Your browser cannot run ParticleQuest!
+          	               Your browser cannot run BrowserQuest!
           	               <span class="right-ornament"></span>
                          </h1>
                          <p>
                              We're sorry, but your browser does not support WebSockets.<br>
                              In order to play, we recommend using the latest version of Firefox, Chrome or Safari.
                          </p>
-                    </article>
-                    <article id="legal">
-          	           <h1>
-          	               <span class="left-ornament"></span>
-          	               Privacy
-          	               <span class="right-ornament"></span>
-                         </h1>
-                         <p>
-                             ParticleQuest stores your character name, game achievements and equipment in your browser and does not send them to Mozilla or anybody else. We do collect server log data (such as IP address) as well as web analytics data. We handle info we receive about you as explained in our <a class="clickable" target="_blank" href="http://www.mozilla.org/en-US/privacy-policy">Privacy Policy</a>.
-                         </p>
- 	                    <div id="close-legal">
- 	                        <span>- click anywhere to close -</span>
-                         </div>
                     </article>
 	            </div>
 	            <div class="parchment-right"></div>
@@ -311,7 +283,7 @@ CERN Summer Webfest presents an HTML5 mini-MMORPG by Summer Students http://www.
     			</div>
 				<div id="chatbox">
 				    <form action="none" method="get" accept-charset="utf-8">
-					    <input id="chatinput" class="gp placeholder" type="text" maxlength="60" placeholder="What do you want to say? (Remember to protect your privacy!)">
+					    <input id="chatinput" class="gp" type="text" maxlength="60">
 				    </form>
 				</div>
                 <div id="population">
@@ -330,14 +302,8 @@ CERN Summer Webfest presents an HTML5 mini-MMORPG by Summer Students http://www.
               <a href="http://twitter.com/share?url=http%3A%2F%2Fbrowserquest.mozilla.org&amp;text=Mozilla%27s%20BrowserQuest%3A%20HTML5%20massively%20multiplayer%20adventure%20game%20%23demo%20%23websockets&amp;related=glecollinet:Creators%20of%20BrowserQuest%2Cwhatthefranck" class="twitter"></a>
               <a href="http://www.facebook.com/share.php?u=http://browserquest.mozilla.org/" class="facebook"></a>
 		    </div>
-		    <div id="privacy-link" class="clickable">
-		      <span class="dash">&ndash;</span> <span id="toggle-legal">Privacy</span>
-		    </div>
-		    <div id="legal-link" class="clickable">
-		      <span class="dash">&ndash;</span> <a class="clickable" target="_blank" href="http://www.mozilla.org/en-US/about/legal.html">Legal notices</a>
-		    </div>
 		    <div id="credits-link" class="clickable">
-		      <span class="dash">&ndash;</span> <span id="toggle-credits">Credits</span>
+		      – <span id="toggle-credits">Credits</span>
 		    </div>
 		</footer>
 		
@@ -373,13 +339,12 @@ CERN Summer Webfest presents an HTML5 mini-MMORPG by Summer Students http://www.
             if(!Modernizr.localstorage) {
                 var alert = document.createElement("div");
                     alert.className = 'alert';
-                var alertMsg = document.createTextNode("You need to enable cookies/localStorage to play ParticleQuest");
+                    alertMsg = document.createTextNode("You need to enable cookies/localStorage to play BrowserQuest");
                     alert.appendChild(alertMsg);
 
                 target = document.getElementById("intro");
                 document.body.insertBefore(alert, target);
             } else if(localStorage && localStorage.data) {
-                document.body.className += " returning";
                 parchment.className = "loadcharacter";
             }
         </script>

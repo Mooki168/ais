@@ -1,12 +1,12 @@
 
 define(['item'], function(Item) {
-
+    
     var Items = {
-
+        
         Sword2: Item.extend({
             init: function(id) {
                 this._super(id, Types.Entities.SWORD2, "weapon");
-                this.lootMessage = "You pick up an anti-matter ray-sword.";
+                this.lootMessage = "You pick up a steel sword";
             },
         }),
 
@@ -83,10 +83,10 @@ define(['item'], function(Item) {
         Flask: Item.extend({
             init: function(id) {
                 this._super(id, Types.Entities.FLASK, "object");
-                this.lootMessage = "You fortify yourself against particle radiation.";
+                this.lootMessage = "You drink a health potion";
             },
         }),
-
+        
         Cake: Item.extend({
             init: function(id) {
                 this._super(id, Types.Entities.CAKE, "object");
@@ -106,7 +106,7 @@ define(['item'], function(Item) {
                 this._super(id, Types.Entities.FIREPOTION, "object");
                 this.lootMessage = "You feel the power of Firefox!";
             },
-
+    
             onLoot: function(player) {
                 player.startInvincibility();
             },

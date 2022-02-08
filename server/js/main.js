@@ -1,23 +1,15 @@
+
 var fs = require('fs'),
     Metrics = require('./metrics');
 
-function main(config) {
-    // Configure logging
-    var Log = require('log');
-    switch(config.debug_level) {
-        case "error":
-            log = new Log(Log.ERROR); break;
-        case "debug":
-            log = new Log(Log.DEBUG); break;
-        case "info":
-            log = new Log(Log.INFO); break;
-    };
 
+function main(config) {
     var ws = require("./ws"),
         WorldServer = require("./worldserver"),
+        Log = require('log'),
         _ = require('underscore'),
-        server = new ws.MultiVersionWebsocketServer(config.port, config.use_one_port),
-        metrics = config.metrics_enabled ? new Metrics(config) : null,
+        server = new ws.MultiVersionWebsocketServer(config.port),
+        metrics = config.metrics_enabled ? new Metrics(config) : null;
         worlds = [],
         lastTotalPlayers = 0,
         checkPopulationInterval = setInterval(function() {
@@ -32,9 +24,18 @@ function main(config) {
                 });
             }
         }, 1000);
-
-    log.info("Starting ParticleQuest game server...");
-
+    
+    switch(config.debug_level) {
+        case "error":
+            log = new Log(Log.ERROR); break;
+        case "debug":
+            log = new Log(Log.DEBUG); break;
+        case "info":
+            log = new Log(Log.INFO); break;
+    };
+    
+    log.info("Starting BrowserQuest game server...");
+    
     server.onConnect(function(connection) {
         var world, // the one in which the player will be spawned
             connect = function() {
@@ -42,7 +43,7 @@ function main(config) {
                     world.connect_callback(new Player(connection, world));
                 }
             };
-
+        
         if(metrics) {
             metrics.getOpenWorldCount(function(open_world_count) {
                 // choose the least populated world among open worlds
@@ -63,7 +64,7 @@ function main(config) {
     server.onError(function() {
         log.error(Array.prototype.join.call(arguments, ", "));
     });
-
+    
     var onPopulationChange = function() {
         metrics.updatePlayerCounters(worlds, function(totalPlayers) {
             _.each(worlds, function(world) {
@@ -82,26 +83,25 @@ function main(config) {
             world.onPlayerRemoved(onPopulationChange);
         }
     });
-
+    
     server.onRequestStatus(function() {
         return JSON.stringify(getWorldDistribution(worlds));
     });
-
+    
     if(config.metrics_enabled) {
         metrics.ready(function() {
             onPopulationChange(); // initialize all counters to 0 when the server starts
         });
     }
-
+    
     process.on('uncaughtException', function (e) {
-        // Display the full error stack, to aid debugging
-        log.error('uncaughtException: ' + e.stack);
+        log.error('uncaughtException: ' + e);
     });
 }
 
 function getWorldDistribution(worlds) {
     var distribution = [];
-
+    
     _.each(worlds, function(world) {
         distribution.push(world.playerCount);
     });
@@ -111,7 +111,7 @@ function getWorldDistribution(worlds) {
 function getConfigFile(path, callback) {
     fs.readFile(path, 'utf8', function(err, json_string) {
         if(err) {
-            console.info("This server can be customized by creating a configuration file named: " + err.path);
+            console.error("Could not open config file:", err.path);
             callback(null);
         } else {
             callback(JSON.parse(json_string));

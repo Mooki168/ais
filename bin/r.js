@@ -15,7 +15,7 @@
 /*global readFile: true, process: false, Packages: false, print: false,
 console: false, java: false, module: false */
 
-var requirejs, require, define, file = require("../shared/js/file");
+var requirejs, require, define;
 (function (console, args, readFileFunc) {
 
     var fileName, env, fs, vm, path, exec, rhinoContext, dir, nodeRequire,
@@ -88,7 +88,7 @@ var requirejs, require, define, file = require("../shared/js/file");
         };
 
         exists = function (fileName) {
-            return file.existsSync(fileName);
+            return path.existsSync(fileName);
         };
 
 
@@ -2218,7 +2218,7 @@ var requirejs, require, define, file = require("../shared/js/file");
         context.loaded[moduleName] = false;
         context.scriptCount += 1;
 
-        if (file.existsSync(url)) {
+        if (path.existsSync(url)) {
             contents = fs.readFileSync(url, 'utf8');
 
             contents = req.makeNodeWrapper(contents);

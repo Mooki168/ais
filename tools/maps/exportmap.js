@@ -4,7 +4,6 @@ var util = require('util'),
     Log = require('log'),
     path = require("path"),
     fs = require("fs"),
-    file = require("../../shared/js/file"),
     processMap = require('./processmap'),
     log = new Log(Log.DEBUG);
     
@@ -48,7 +47,7 @@ function main() {
 function getTiledJSONmap(filename, callback) {
     var self = this;
     
-    file.exists(filename, function(exists) {
+    path.exists(filename, function(exists) {
         if(!exists) {  
             log.error(filename + " doesn't exist.")
             return;
